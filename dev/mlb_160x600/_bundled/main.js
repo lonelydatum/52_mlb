@@ -17,73 +17,44 @@ gsap.defaults({
 });
 
 var read = {
-	percentGoBack: 2.5,
-	betOnNFL: 2.2,
-	njasb: 2,
-	losingBy: 2.5
+	t1: 3,
+	t2: 1.8
 };
 
 var w = bannerSize.w;
 var h = bannerSize.h;
 
-function fader(el, time) {
-	var tl = new TimelineMax();
-	tl.from(el, { duration: .3, opacity: 0 }, "+=.2");
-	tl.to(el, { duration: .3, opacity: 0 }, "+=" + time);
-	return tl;
-}
-
-function ender() {
-	var tl = new TimelineMax();
-	tl.from([".t3", ".logo3"], { duration: .3, opacity: 0 }, "+=.2");
-	tl.from([".footer", ".cta"], { duration: .3, opacity: 0 }, "+=.5");
-	tl.add((0, _proline.olg)());
-	return tl;
-}
-
 function init() {
-	var tl = new TimelineMax({ onComplete: function onComplete() {
-			if (document.getElementById("legalBtn")) {
-				TweenLite.set("#legalBtn", { display: "block" });
-			}
-		} });
+	var tl = new TimelineMax();
 	tl.set(".frame1", { opacity: 1 });
 	return tl;
 }
 
-function slider() {
-	var read = arguments.length <= 0 || arguments[0] === undefined ? 2 : arguments[0];
-
-	var tl = new TimelineMax();
-
-	tl.add("t1");
-	tl.from(".t1a", { duration: .26, x: "-=100", y: "+=30", opacity: 0 }, "t1");
-	tl.from(".t1b", { duration: .26, x: "+=100", y: "-=30", opacity: 0 }, "t1+=.6");
+function standard(heros) {
+	var tl = init();
+	tl.from(".t1", { duration: .3, opacity: 0 }, "+=.5");
+	tl.from(".bg-news", { duration: .3, opacity: 0 }, "+=" + read.t1);
+	tl.from(".hero", { duration: .5, opacity: 0 }, "+=.1");
+	console.log(heros);
+	if (heros) {
+		tl.add(heros);
+	}
+	tl.from(".t2", { duration: .3, opacity: 0 }, "+=.5");
+	tl.to(".t2", { duration: .3, opacity: 0 }, "+=" + read.t2);
+	tl.from([".tint", ".end"], { duration: .3, opacity: 0 }, "+=.2");
 
 	return tl;
 }
 
-function standard() {
-	var phoneDuration = arguments.length <= 0 || arguments[0] === undefined ? .29 : arguments[0];
-
-	var tl = init();
-	// return
-	tl.add("phone", "+=1");
-	tl.to(".logo1", { duration: phoneDuration * .8, opacity: 0 }, "phone");
-	tl.to(".phone", { duration: phoneDuration, y: 0, x: 0 }, "phone");
-	tl.to(".phone_dark", { duration: phoneDuration, opacity: 0 });
-	tl.add(slider(), "+=.1");
-	tl.to(".f1", { duration: .26, opacity: 0 }, "+=1.4");
-
-	tl.add(fader(".t2", read.betOnNFL));
-
-	tl.add(ender());
-
-	return tl;
+function withHeros() {
+	var tl = new TimelineMax();
+	tl.from(".hero-0", { duration: .3, opacity: 0 }, "+=.1");
+	tl.from(".hero-1", { duration: .3, opacity: 0 }, "+=.1");
+	standard(tl);
 }
 
 function b_970x250() {
-	standard(.4);
+	withHeros();
 }
 
 function b_160x600() {
@@ -91,52 +62,29 @@ function b_160x600() {
 }
 
 function b_300x250() {
-	standard();
+	withHeros();
 }
 
 function b_300x600() {
-	standard();
+	withHeros();
 }
 
 function b_1000x700() {
-	standard(.4);
+	standard();
 }
 
 function b_970x70() {
-	var tl = new TimelineMax();
-	tl.add("t1");
-	tl.from(".t1a", { duration: .11, y: "-=50" }, "t1");
-	b_728x90(tl);
+	standard();
 }
 
 function b_320x50() {
 	var phoneDuration = arguments.length <= 0 || arguments[0] === undefined ? .29 : arguments[0];
 
-	var tl = init();
-
-	// tl.add("phone", "+=1")
-	// tl.to(".logo1", {duration:.4, opacity:0}, "phone")
-	// tl.to(".phone", {duration:.4, y:0, x:0}, "phone")
-
-	tl.add("phone", "+=1");
-	tl.to(".logo1", { duration: phoneDuration * .8, opacity: 0 }, "phone");
-	tl.to(".phone", { duration: phoneDuration, y: 0, x: 0 }, "phone");
-	tl.to(".phone_dark", { duration: phoneDuration, opacity: 0 });
-
-	tl.from(".t1a", { duration: .4, opacity: 0 }, "phone+=.2");
-
-	tl.to(".f1", { duration: .26, opacity: 0 }, "+=1.4");
-
-	tl.add(fader(".t2", 2.8));
-	tl.add(fader(".t3", 3.8));
-
-	tl.from(".f4", { duration: .3, opacity: 0 }, "+=.2");
-
-	tl.add((0, _proline.olg)());
+	withHeros();
 }
 
 function b_728x90(text1) {
-	standard(.4);
+	withHeros();
 }
 
 exports.init = init;
