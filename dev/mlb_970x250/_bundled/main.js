@@ -17,7 +17,8 @@ gsap.defaults({
 });
 
 var read = {
-	t1: 3,
+	t1: 5,
+	t1b: 2,
 	t2: 1.8
 };
 
@@ -32,10 +33,12 @@ function init() {
 
 function standard(heros) {
 	var tl = init();
-	tl.from(".t1", { duration: .3, opacity: 0 }, "+=.5");
-	tl.from(".bg-news", { duration: .3, opacity: 0 }, "+=" + read.t1);
+	tl.from(".t1", { duration: .5, opacity: 0 }, "+=.5");
+	tl.to(".t1", { duration: .3, opacity: 0 }, "+=" + read.t1);
+	tl.from(".t1b", { duration: .5, opacity: 0 }, "+=.1");
+	tl.from(".bg-news", { duration: .3, opacity: 0 }, "+=" + read.t1b);
 	tl.from(".hero", { duration: .5, opacity: 0 }, "+=.1");
-	console.log(heros);
+
 	if (heros) {
 		tl.add(heros);
 	}
