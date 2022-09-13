@@ -19,7 +19,7 @@ gsap.defaults({
 var read = {
 	t1: 2,
 	t1a: 3,
-	t1b: 2,
+	t1b: 2.3,
 	t2: 1.8
 };
 
@@ -40,7 +40,7 @@ function standard(heros) {
 	tl.to([".t1_", ".t1"], { duration: .3, opacity: 0 }, "+=" + read.t1a);
 
 	tl.from(".t1b", { duration: .5, opacity: 0 }, "+=.1");
-	tl.from([".hero", ".bg-news"], { duration: .6, opacity: 0 }, "+=" + read.t1b);
+	tl.from([".hero", ".bg-news"], { duration: .6, opacity: 0, ease: "power1.out" }, "+=" + read.t1b);
 	// tl.from(".hero", {duration:.5, opacity:0}, "+=.1")
 
 	if (heros) {
@@ -55,8 +55,8 @@ function standard(heros) {
 
 function withHeros() {
 	var tl = new TimelineMax();
-	tl.from(".hero-0", { duration: .3, opacity: 0 }, "+=.1");
-	tl.from(".hero-1", { duration: .3, opacity: 0 }, "+=.1");
+	tl.from(".hero-0", { duration: .3, opacity: 0, ease: "power1.out" }, "+=.1");
+	tl.from(".hero-1", { duration: .3, opacity: 0, ease: "power1.out" });
 	standard(tl);
 }
 
