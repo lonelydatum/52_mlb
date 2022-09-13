@@ -177,13 +177,13 @@ canvas, .text, .frame, .outline, img {
 }
 
 .shadow {
-  -webkit-filter: drop-shadow(5px 5px 5px #000);
-  filter: drop-shadow(5px 5px 5px #000);
+  -webkit-filter: drop-shadow(5px 5px 10px #000);
+  filter: drop-shadow(5px 5px 10px #000);
 }
 
 .t2 {
-  -webkit-filter: drop-shadow(5px 5px 5px #000);
-  filter: drop-shadow(5px 5px 5px #000);
+  -webkit-filter: drop-shadow(5px 5px 9px #000);
+  filter: drop-shadow(5px 5px 9px #000);
 }
 
 .retina {
