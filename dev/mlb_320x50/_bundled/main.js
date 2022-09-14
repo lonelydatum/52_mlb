@@ -40,15 +40,19 @@ function standard(heros) {
 	tl.to([".t1_", ".t1"], { duration: .3, opacity: 0 }, "+=" + read.t1a);
 
 	tl.from(".t1b", { duration: .5, opacity: 0 }, "+=.1");
-	tl.from([".hero", ".bg-news"], { duration: .6, opacity: 0, ease: "power1.out" }, "+=" + read.t1b);
+	tl.to(".t1b", { duration: .2, opacity: 0 }, "+=" + read.t1b);
+	tl.from(".hero", { duration: .6, opacity: 0, ease: "power1.out" });
+	tl.from(".t2", { duration: .3, opacity: 0 }, "+=.2");
+	tl.to(".t2", { duration: .3, opacity: 0 }, "+=" + read.t2);
 	// tl.from(".hero", {duration:.5, opacity:0}, "+=.1")
 
+	tl.add("heros");
+	tl.from(".bg-news", { duration: .8, opacity: 0, ease: "power1.out" }, "\"heros\"");
 	if (heros) {
-		tl.add(heros);
+		tl.add(heros, "heros");
 	}
-	tl.from(".t2", { duration: .3, opacity: 0 }, "+=.5");
-	tl.to(".t2", { duration: .3, opacity: 0 }, "+=" + read.t2);
-	tl.from([".tint", ".end"], { duration: .3, opacity: 0 }, "+=.2");
+
+	tl.from([".tint", ".end"], { duration: .5, opacity: 0 }, "+=.2");
 
 	return tl;
 }
