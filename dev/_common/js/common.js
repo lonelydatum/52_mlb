@@ -49,8 +49,9 @@ function standard(heros){
 		tl.add(heros, "heros")
 	}
 	
-	
-	tl.from([".tint", ".end"], {duration:.5, opacity:0}, "+=.2")
+	tl.from(".tint", {duration:.5, opacity:0}, "+=.2")
+	tl.from(".end", {duration:.3, opacity:0}, "+=.2")
+	// tl.from([".tint", ".end"], {duration:.5, opacity:0}, "+=.2")
 	
 	return tl
 }
